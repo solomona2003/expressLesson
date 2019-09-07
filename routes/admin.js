@@ -8,7 +8,12 @@ const product = []
 // starts with /admin 
 router.get('/add-product', (req, res, next) => {
     // res.sendFile( path.join(rootDir, 'views', 'add-product.html') )
-    res.render('add-product', {docTitle: 'add-products'})
+    res.render('add-product', 
+    {docTitle: 'add-products',
+     formscss: true,
+     productcss: true,
+     activeaddproduct: true
+    })
 })
 
 // starts with /admin 
