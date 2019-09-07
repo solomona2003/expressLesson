@@ -3,22 +3,26 @@ const path = require('path')
 const rootDir = require('../util/path')
 
 const router = express.Router()
-
+const product = []
 
 // starts with /admin 
 router.get('/add-product', (req, res, next) => {
-    res.sendFile( path.join(rootDir, 'views', 'add-product.html') )
+    // res.sendFile( path.join(rootDir, 'views', 'add-product.html') )
+    res.render('add-product', {docTitle: 'add-products'})
 })
 
 // starts with /admin 
 router.post('/add-product',(req, res, next)=> {
     res.redirect('/')
-    console.log(req.body);
+    product.push({title: req.body.title})
+    console.log(product );
+    
     
     
 })
 
 module.exports = {
     router: router,
-    okText: "admin.js is working"
+    okText: "admin.js is working",
+    product: product
 }
