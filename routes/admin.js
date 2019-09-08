@@ -1,7 +1,4 @@
 const express = require('express')
-const path = require('path')
-const rootDir = require('../util/path')
-
 const router = express.Router()
 const product = []
 
@@ -12,7 +9,8 @@ router.get('/add-product', (req, res, next) => {
     {docTitle: 'add-products',
      formscss: true,
      productcss: true,
-     activeaddproduct: true
+     activeaddproduct: true,
+     path: '/admin/add-product'
     })
 })
 
