@@ -1,48 +1,42 @@
+const Product = require('../models/product');
 
-const Product = require('../models/product')
-
-
-
-exports.getCart = (req, res, next) => {
-    // res.sendFile( path.join(rootDir, 'views', 'add-product.html') )
-    res.render('shop/cart',
-        {
-            docTitle: 'Your Cart',
-            path: '/cart'
-        })
-}
-
-exports.getCheckout = (req, res, next) => {
-    // res.sendFile( path.join(rootDir, 'views', 'add-product.html') )
-    res.render('shop/checkout',
-        {
-            docTitle: 'Checkout',
-            path: '/checkout'
-        })
-}
-
-
-exports.getProdcuts = (req, res, next) => {
-    Product.fetchAllProducts((products) => {
-        res.render('shop/product-list',
-            {
-                prods: products,
-                docTitle: 'Shop Products',
-                hasproducts: products.length > 0,
-                path: '/products'
-
-            })
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll(products => {
+    res.render('shop/product-list', {
+      prods: products,
+      pageTitle: 'All Products',
+      path: '/products'
     });
-}
+  });
+};
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAllProducts((products) => {
-        res.render('shop/index',
-            {
-                prods: products,
-                docTitle: 'Shop Index',
-                path: '/'
-
-            })
+  Product.fetchAll(products => {
+    res.render('shop/index', {
+      prods: products,
+      pageTitle: 'Shop',
+      path: '/'
     });
-}
+  });
+};
+
+exports.getCart = (req, res, next) => {
+  res.render('shop/cart', {
+    path: '/cart',
+    pageTitle: 'Your Cart'
+  });
+};
+
+exports.getOrders = (req, res, next) => {
+  res.render('shop/orders', {
+    path: '/orders',
+    pageTitle: 'Your Orders'
+  });
+};
+
+exports.getCheckout = (req, res, next) => {
+  res.render('shop/checkout', {
+    path: '/checkout',
+    pageTitle: 'Checkout'
+  });
+};

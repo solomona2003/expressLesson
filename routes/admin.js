@@ -1,17 +1,18 @@
-const express = require('express')
-const adminController = require('../controllers/admin')
+const path = require('path');
 
-const router = express.Router()
+const express = require('express');
 
-// starts with /admin 
-router.get('/add-product', adminController.getAppProduct)
-// starts with /admin 
-router.post('/add-product', adminController.postAddProduct)
-// starts with /admin 
-router.get('/products', adminController.getAdminProducts)
+const adminController = require('../controllers/admin');
 
-module.exports = {
-    router: router,
-    okText: "admin.js is working",
-   
-}
+const router = express.Router();
+
+// /admin/add-product => GET
+router.get('/add-product', adminController.getAddProduct);
+
+// /admin/products => GET
+router.get('/products', adminController.getProducts);
+
+// /admin/add-product => POST
+router.post('/add-product', adminController.postAddProduct);
+
+module.exports = router;
