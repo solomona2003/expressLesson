@@ -6,6 +6,8 @@
 
 .product-item {
     width: 20rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     max-width: 95%;
 }
 
