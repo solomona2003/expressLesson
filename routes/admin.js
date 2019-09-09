@@ -1,13 +1,14 @@
 const express = require('express')
-const productsController = require('../controllers/products')
+const adminController = require('../controllers/admin')
 
 const router = express.Router()
 
 // starts with /admin 
-router.get('/add-product', productsController.getAppProduct )
-
+router.get('/add-product', adminController.getAppProduct)
 // starts with /admin 
-router.post('/add-product', productsController.postAddProduct)
+router.post('/add-product', adminController.postAddProduct)
+// starts with /admin 
+router.get('/products', adminController.getAdminProducts)
 
 module.exports = {
     router: router,
