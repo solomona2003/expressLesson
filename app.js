@@ -4,6 +4,7 @@ const adminData = require('./routes/admin')
 const shopingRouter = require('./routes/shop')
 const path = require('path')
 const rootDir = require('./util/path')
+const error = require('./controllers/error')
 
 // const expressHbs = require('express-handlebars')
 
@@ -22,13 +23,6 @@ app.set('views', 'views')
 app.use('/admin', adminData.router)
 app.use(shopingRouter.router)
 
-app.use('/', (req, res, next) => {
-    // res.status(404).sendFile(path.join(rootDir, 'views', '404.html'))
-    res.render('404', {
-        docTitle: '404',
-        path: '404'
-
-    })
-})
+app.use( error.showe404) 
 
 app.listen(4000)
